@@ -1,10 +1,12 @@
 import json # installed default
-import requests # pip install requests
-from json2html import * # pip install json2html
-from requests_toolbelt.multipart.encoder import MultipartEncoder # pip install requests_toolbelt
-import os # pip install os0
-from colorama import init, Fore # pip install colorama
-import pyfiglet # pip install pyfiglet
+import requests # pip3 install requests
+from json2html import * # pip3 install json2html
+from requests_toolbelt.multipart.encoder import MultipartEncoder # pip3 install requests_toolbelt
+import os # pip3 install os0
+from colorama import init, Fore # pip3 install colorama
+import pyfiglet # pip3 install pyfiglet
+import subprocess # pip3 subprocess32
+from bs4 import BeautifulSoup # pip3 bs4
 
 
 class Json_from_mobsf():
@@ -28,10 +30,16 @@ class Json_from_mobsf():
             apk = os.listdir(f"/home/{self.user}/Desktop/app") # find directory
             self.apk_f = apk[0]
 
+        def pars_api_key():
+            # pars api key from mobsf
+            response = requests.get("http://0.0.0.0:8000/api_docs").text
+            soup = BeautifulSoup(response, "lxml")
+            soup_1 = soup.find("div", class_ = "card-body")
+            self.api_key = soup_1.find("code").text
+
         def get_json():
             server = "http://0.0.0.0:8000" # "http://127.0.0.1:8000" link
             file = f"/home/{self.user}/Desktop/app/{self.apk_f}/base.apk" # path to the json file in app folder
-            api_key = input("Enter api key: ") # input api key
             os.mkdir(f"/home/{self.user}/Desktop/result_from_mobsf") # create folder
 
             def upload():
@@ -39,7 +47,7 @@ class Json_from_mobsf():
                 # upload file in mobile security framework
                 print("Uploading file")
                 multipart_data = MultipartEncoder(fields = {"file": (file, open(file, "rb"), "application/octet-stream")})
-                headers = {"Content-Type": multipart_data.content_type, "Authorization": api_key}
+                headers = {"Content-Type": multipart_data.content_type, "Authorization": self.api_key}
                 response = requests.post(server + "/api/v1/upload", data = multipart_data, headers = headers)
                 return response.text
 
@@ -48,14 +56,14 @@ class Json_from_mobsf():
                 # scan file in mobile security framework
                 print("Scanning file")
                 post_dict = json.loads(data)
-                headers = {"Authorization": api_key}
+                headers = {"Authorization": self.api_key}
                 response = requests.post(server + "/api/v1/scan", data = post_dict, headers = headers)
 
             def json_resp(data):
                 """Generate JSON Report"""
                 # pars json scan result from mobile security framework
                 print("Generate JSON report")
-                headers = {"Authorization": api_key}
+                headers = {"Authorization": self.api_key}
                 data = {"hash": json.loads(data)["hash"]}
                 response = requests.post(server + "/api/v1/report_json", data = data, headers = headers).text
                 with open(f"/home/{self.user}/Desktop/result_from_mobsf/data.json", "w", encoding = "utf-8") as flip: # write json data file
@@ -65,7 +73,7 @@ class Json_from_mobsf():
                 """Delete Scan Result"""
                 # delete scan result from mobile security framework
                 print("Deleting Scan")
-                headers = {"Authorization": api_key}
+                headers = {"Authorization": self.api_key}
                 data = {"hash": json.loads(data)["hash"]}
                 response = requests.post(server + "/api/v1/delete_scan", data = data, headers = headers)
 
@@ -120,6 +128,7 @@ class Json_from_mobsf():
             print(Fore.GREEN + "Success, file on Desktop")
 
         adb()
+        pars_api_key()
         get_json()
         write_json()
         html()
@@ -145,7 +154,7 @@ class Json_from_android():
         os.renames("report", "report.json") # rename file
 
         dire_1 = os.listdir(f"/home/{self.user}/Desktop/result_from_android/files") # find directory
-        self.direc_1 = dire_1[1]
+        self.direc_1 = dire_1[0]
 
     def read_and_save_files(self):
         with open(f"/home/{self.user}/Desktop/result_from_android/files_1/com.crashlytics.settings.json", "r", encoding = "utf-8") as file: # read json file
