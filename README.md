@@ -64,7 +64,7 @@ docker run -it --rm -p 8000:8000 opensecurity/mobile-security-framework-mobsf:la
 
 ![run_browser](https://user-images.githubusercontent.com/79997543/113423790-16681300-939d-11eb-9982-772e9e124d91.png)
 
-3) Запустить скрипт.
+3) Запустить script.
 
 python3 json_and_android
 
