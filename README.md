@@ -43,7 +43,8 @@ MobSF
 Установка независимостей dependencies.py, dependencies.exe
 
 1) Подключится к Android емулятору.
-adb connect ip:port емулятора 
+adb connect ip:port емулятора
+![run_docker](https://user-images.githubusercontent.com/79997543/113422312-74472b80-939a-11eb-988c-da7719a50661.png)
 
 2) Запустить MobSF.
 docker run -it --rm -p 8000:8000 opensecurity/mobile-security-framework-mobsf:latest
