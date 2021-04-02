@@ -41,6 +41,10 @@ MobSF
 Инструкция по использованию
 
 Установка независимостей dependencies.py, dependencies.exe
+sudo python3 dependencies.py
+sudo dependencies.exe
+
+![dependencies](https://user-images.githubusercontent.com/79997543/113424746-a9557d00-939e-11eb-9872-f6130f882f6c.png)
 
 1) Подключится к Android емулятору.
 adb connect ip:port емулятора
@@ -57,7 +61,7 @@ docker run -it --rm -p 8000:8000 opensecurity/mobile-security-framework-mobsf:la
 ![run_browser](https://user-images.githubusercontent.com/79997543/113423790-16681300-939d-11eb-9982-772e9e124d91.png)
 
 3) Запустить скрипт.
-python3 путь к скрипту
+python3 json_and_android,
 ввести apk файл который сканировать
 
 ![run](https://user-images.githubusercontent.com/79997543/113423831-2e3f9700-939d-11eb-9284-9522517ef4a8.png)
