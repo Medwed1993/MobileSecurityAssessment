@@ -75,3 +75,5 @@ python3 json_and_android
 Папки с результатами сохранятся на Desktop.
 
 ![finish](https://user-images.githubusercontent.com/79997543/113423841-313a8780-939d-11eb-8d0d-1f89accb7a8a.png)
+
+![folder](https://user-images.githubusercontent.com/79997543/113423796-19fb9a00-939d-11eb-97f0-a9d2d8062e36.png)
