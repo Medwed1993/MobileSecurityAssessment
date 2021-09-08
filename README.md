@@ -40,40 +40,25 @@ MobSF
 
 Инструкция по использованию.
 
-Установка независимостей dependencies.py, dependencies.exe
+Установка независимостей dependencies.py
 
 sudo python3 dependencies.py
-
-sudo dependencies.exe
 
 ![dependencies](https://user-images.githubusercontent.com/79997543/113424746-a9557d00-939e-11eb-9872-f6130f882f6c.png)
 
 1) Подключится к Android емулятору.
 
-adb connect ip:port емулятора
+adb connect ip:5555 емулятора
 
 ![adb](https://user-images.githubusercontent.com/79997543/113423761-0bad7e00-939d-11eb-91e1-7764f7142ff8.png)
 
-2) Запустить MobSF.
+2) Запустить script.
 
-docker run -it --rm -p 8000:8000 opensecurity/mobile-security-framework-mobsf:latest
+python3 mobsa.py exampl.apk
 
-![run_docker](https://user-images.githubusercontent.com/79997543/113422312-74472b80-939a-11eb-988c-da7719a50661.png)
-
-перейти на локальный сайт http://0.0.0.0:8000
-
-![run_browser](https://user-images.githubusercontent.com/79997543/113423790-16681300-939d-11eb-9982-772e9e124d91.png)
-
-3) Запустить script.
-
-python3 json_and_android
-
-ввести apk файл который сканировать
-
-![run](https://user-images.githubusercontent.com/79997543/113423831-2e3f9700-939d-11eb-9284-9522517ef4a8.png)
+![run](https://user-images.githubusercontent.com/79997543/132571877-daafbeb6-a72a-40c7-836f-2ce50264b9e8.png)
+![run2](https://user-images.githubusercontent.com/79997543/132572010-86edd3d0-96c2-4ae5-af99-72f2eb6bc506.png)
 
 Папки с результатами сохранятся на Desktop.
-
-![finish](https://user-images.githubusercontent.com/79997543/113423841-313a8780-939d-11eb-8d0d-1f89accb7a8a.png)
 
 ![folder](https://user-images.githubusercontent.com/79997543/113423796-19fb9a00-939d-11eb-97f0-a9d2d8062e36.png)
