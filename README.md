@@ -10,7 +10,7 @@ API to upload a file. Supported file types are apk, zip, ipa and appx.
 
 #### Request example:
 ----------------------------------------------------------------------
-
+```
 POST /upload/ HTTP/1.1
 Host: ********
 Content-Length: 37040983
@@ -28,12 +28,12 @@ Connection: close
 ------WebKitFormBoundary3pHsu1Yah8bUrZJ5
 Content-Disposition: form-data; name="file"; filename="tetsapp.apk"
 Content-Type: application/vnd.android.package-archive
-
+```
 ----------------------------------------------------------------------
 
 #### Response example:
 ----------------------------------------------------------------------
-
+```
 HTTP/1.1 200 OK
 Server: gunicorn
 Date: Mon, 13 Sep 2021 07:43:26 GMT
@@ -43,7 +43,7 @@ Access-Control-Allow-Origin: *
 Content-Length: 144
 
 {"analyzer": "static_analyzer", "status": "success", "hash": "3a55c64114904d23b4b5afc17213f59c", "scan_type": "apk", "file_name": "tetsapp.apk"}
-
+```
 ----------------------------------------------------------------------
 
 ### Return result
