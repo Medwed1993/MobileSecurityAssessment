@@ -9,8 +9,9 @@ Main domain: https://********
 API to upload a file. Supported file types are apk, zip, ipa and appx.
 
 #### Request example:
+----------------------------------------------------------------------
 
-`POST /upload/ HTTP/1.1
+POST /upload/ HTTP/1.1
 Host: ********
 Content-Length: 37040983
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36
@@ -26,10 +27,14 @@ Connection: close
 
 ------WebKitFormBoundary3pHsu1Yah8bUrZJ5
 Content-Disposition: form-data; name="file"; filename="tetsapp.apk"
-Content-Type: application/vnd.android.package-archive`
+Content-Type: application/vnd.android.package-archive
+
+----------------------------------------------------------------------
 
 #### Response example:
-`HTTP/1.1 200 OK
+----------------------------------------------------------------------
+
+HTTP/1.1 200 OK
 Server: gunicorn
 Date: Mon, 13 Sep 2021 07:43:26 GMT
 Connection: close
@@ -37,7 +42,9 @@ Content-Type: application/json; charset=utf-8
 Access-Control-Allow-Origin: *
 Content-Length: 144
 
-{"analyzer": "static_analyzer", "status": "success", "hash": "3a55c64114904d23b4b5afc17213f59c", "scan_type": "apk", "file_name": "tetsapp.apk"}`
+{"analyzer": "static_analyzer", "status": "success", "hash": "3a55c64114904d23b4b5afc17213f59c", "scan_type": "apk", "file_name": "tetsapp.apk"}
+
+----------------------------------------------------------------------
 
 ### Return result
 
